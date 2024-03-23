@@ -1,8 +1,27 @@
 namespace DesafioPOO.Models
 {
-    // TODO: Herdar da classe "Smartphone"
-    public class Iphone
+    public class Iphone : Smartphone
     {
-        // TODO: Sobrescrever o método "InstalarAplicativo"
+        public string Senha { get; set; }
+        public string SenhaInstalacao { get; set; }
+        public Iphone(string numero, string modelo, string imei, int memoria, int tamanhoApp) : base(numero, modelo, imei, memoria, tamanhoApp)
+        {
+        }
+
+        public override void InstalarAplicativo(string nomeApp)
+        { 
+            if(TamanhoApp < Memoria && Senha == SenhaInstalacao)
+            {
+                 Console.WriteLine($"{nomeApp} instalado!");
+            }
+            else if(TamanhoApp > Memoria)
+            {
+                Console.WriteLine($"Espaço de memória insuficiente, {nomeApp} não seré instalado.");
+            }
+            else
+            {
+                Console.WriteLine("Senha incorreta!");
+            }
+        }
     }
 }
